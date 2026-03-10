@@ -1,0 +1,57 @@
+** start of main.py **
+
+distance_mi = 0
+is_raining = True
+has_bike = True
+has_car = True
+has_ride_share_app = True
+
+if not distance_mi:
+    print(False)
+
+elif distance_mi <= 1:
+    if is_raining == False:
+        print(True)
+    else:
+        print(False)
+
+elif distance_mi <= 6 and distance_mi > 1:
+    if is_raining and not has_bike:
+        print(False)
+    elif not is_raining and not has_bike:
+        print(False)
+    elif has_bike and not is_raining:
+        print(True)
+elif distance_mi > 6:
+    if has_ride_share_app:
+        print(True)
+    elif has_car:
+        print(True)
+    else:
+        print(False)
+
+#    print('Short Distance')
+#    if is_raining and not has_bike:
+#        print(False)
+#    elif not is_raining and not has_bike:
+#        print(False)
+#    elif has_bike and not is_raining:
+#        print(True)
+#and (is_raining == False and has_bike == False):
+#    print('False')
+#elif (distance_mi <= 6 and distance_mi > 1) and (is_raining and #has_bike == False):
+#    print('False')
+
+#    if is_raining and has_bike == False:
+#        print('False')
+#    elif has_bike and is_raining == False:
+#        print('False')
+
+#if distance_mi > 6:
+#    if has_car == True or has_ride_share_app == True:
+#        print('True')
+#    print('False')
+
+
+** end of main.py **
+

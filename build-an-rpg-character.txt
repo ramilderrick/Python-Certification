@@ -1,0 +1,63 @@
+** start of main.py **
+
+full_dot = '●'
+empty_dot = '○'
+
+def create_character(name, strength, intelligence, charisma):
+    if not isinstance(name, str):
+        return 'The character name should be a string'
+    elif name == '':
+        return 'The character should have a name'
+    elif len(name) > 10:
+        return 'The character name is too long'
+    elif ' ' in name:
+        return 'The character name should not contain spaces'
+    
+    if not isinstance(strength, int) or not isinstance(intelligence, int) or not isinstance(charisma, int):
+        return 'All stats should be integers'
+
+    if (strength < 1) or (intelligence < 1) or (charisma < 1):
+        return 'All stats should be no less than 1'
+
+    if (strength > 4) or (intelligence > 4) or (charisma > 4):
+        return 'All stats should be no more than 4'
+
+    if (strength + intelligence + charisma) != 7:
+        return 'The character should start with 7 points'
+    
+
+    remainstr = 10 - strength
+    remain_str = empty_dot * remainstr
+    strengthdots = full_dot * strength
+    finalstr = strengthdots + remain_str
+
+    remainint = 10 - intelligence
+    remain_int = empty_dot * remainint
+    intdots = full_dot * intelligence
+    finalint = intdots + remain_int
+
+    remainchar = 10 - charisma
+    remain_char = empty_dot * remainchar
+    chardots = full_dot * charisma
+    finalchar = chardots + remain_char
+
+    str_out = f'STR {finalstr}'
+    int_out = f'INT {finalint}'
+    char_out = f'CHA {finalchar}'
+
+    
+    string_out = f'{name}\n{str_out}\n{int_out}\n{char_out}'
+
+    return string_out
+
+    #print(name)
+    #print('STR', finalstr)
+    #print('INT', finalint)
+    #print('CHA', finalchar)
+    #return 0
+
+output = create_character('ren', 4, 2, 1)
+print(output)
+
+** end of main.py **
+

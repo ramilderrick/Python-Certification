@@ -1,0 +1,85 @@
+** start of main.py **
+
+# this function checks whether a key exists in an input dictionary, if it does not it adds it, otherwise it indicates if its not able to be added as a setting
+def add_setting(dict_setting, kv_pair):
+    lower_case_pair = tuple(name.lower() for name in kv_pair) #converts the key and value to lowercase
+    
+    key = lower_case_pair[0]
+    value = lower_case_pair[1]
+
+    if lower_case_pair[0] in dict_setting: # checks if key exists
+        rtrnmessage = f"Setting '{key}' already exists! Cannot add a new setting with this name."
+    else:
+        dict_setting.update([lower_case_pair])
+        rtrnmessage = f"Setting '{key}' added with value '{value}' successfully!"
+
+    return rtrnmessage # returns update string
+
+# This function updates value of a key in the input dictionary, checks if there is a key that can be updated, if there is not then no key can be updated
+def update_setting(dict_setting, kv_pair):
+    lower_case_pair = tuple(name.lower() for name in kv_pair)
+
+    key = lower_case_pair[0]
+    value = lower_case_pair[1]
+
+    if lower_case_pair[0] in dict_setting:
+        dict_setting.update([lower_case_pair])
+        rtrnupdatemessage = f"Setting '{key}' updated to '{value}' successfully!"
+    else:
+        rtrnupdatemessage = f"Setting '{key}' does not exist! Cannot update a non-existing setting."
+
+    return rtrnupdatemessage # returns update string
+
+# This function removes a key from the dictionary
+def delete_setting(dict_setting, keyinput):
+    lowered_key = keyinput.lower()
+
+    if lowered_key in dict_setting:
+        dict_setting.pop(lowered_key)
+        rtrndeletemessage = f"Setting '{lowered_key}' deleted successfully!"
+    else:
+        rtrndeletemessage = f"Setting not found!"
+
+    return rtrndeletemessage #returns delete string
+
+# This function gives a proper viewing message of the contents that are part of the dictionary
+def view_settings(dict_setting):
+    
+    if not dict_setting:
+        rtrnviewmessage = 'No settings available.'
+    else:
+        rtrnviewmessage = f"Current User Settings:\n"
+        for key, value in dict_setting.items():
+            rtrnviewmessage += f"{key.capitalize()}: {value}\n"
+
+    return rtrnviewmessage
+
+
+
+test_settings = {
+    'brightness': 'bright',
+    'location': 'not available',
+    'wifi': 'On',
+    'Bluetooth': 'On',
+    'Airplane Mode': 'Off'
+}
+
+new_settings = ('Speakers', 'BOSE')
+test_error = ('brightness', 'low')
+
+test_key = 'speakers'
+
+setting = add_setting(test_settings, new_settings)
+
+testsetting2 = update_setting(test_settings, test_error)
+
+testsetting3 = delete_setting(test_settings, test_key)
+
+testsetting4 = view_settings(test_settings)
+
+print(testsetting4)
+
+#print(setting)
+
+** end of main.py **
+
