@@ -1,0 +1,33 @@
+class Planet:
+    def __init__(self, name, planet_type, star):
+        self.name = name
+        self.planet_type = planet_type
+        self.star = star
+
+        #checks if any of the args are not a string
+        if not all(isinstance(x, str) for x in (name, planet_type, star)):
+            raise TypeError('name, planet type, and star must be strings')
+        
+        #checks if any of the args are a non-empty string
+        if not name or not planet_type or not star:
+            raise ValueError('name, planet_type, and star must be non-empty strings')
+
+    
+    def orbit(self):
+        return f'{self.name} is orbiting around {self.star}...'
+
+    def __str__(self):
+        return f'Planet: {self.name} | Type: {self.planet_type} | Star: {self.star}'
+
+#initializing 3 different instances of the planet class
+planet_1 = Planet('Earth', 'Terrestrial Planet', 'The Sun')
+planet_2 = Planet('Uranus', 'Gas Giant', 'The Sun') 
+planet_3 = Planet('Neptune', 'Ice Giant', 'The Sun')
+
+#printing each planet object to show the __str__ and orbit methods
+print(planet_1) 
+print(planet_1.orbit()) 
+print(planet_2) 
+print(planet_2.orbit()) 
+print(planet_3) 
+print(planet_3.orbit())
